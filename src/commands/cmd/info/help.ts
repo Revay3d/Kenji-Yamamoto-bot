@@ -7,6 +7,7 @@ import {
   MessageSelectMenu,
 } from "discord.js";
 import config from "../../../config/config";
+import { MsgComponentInt } from "../../../types/mci";
 
 module.exports = {
   name: "help",
@@ -90,11 +91,16 @@ module.exports = {
         .setColor("AQUA");
 
       // Collector
-      collector.on("collect", async (i) => {
+      collector.on("collect", async (i: MsgComponentInt) => {
         // Botones
         if (i.customId === "button_commands") {
           await i.deferUpdate();
           i.editReply({ embeds: [CommandsMenu], components: [CommandsRow] });
+        }
+        // Menu de comandos
+        if (i.customId === "menu_commands" && i.values[0] === "fun") {
+          await i.deferUpdate();
+          i.editReply({ embeds: [FunCommands], components: [CommandsRow] });
         }
       });
     } catch (err) {
