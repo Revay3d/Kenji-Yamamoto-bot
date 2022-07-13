@@ -6,6 +6,7 @@ module.exports = {
   name: "interactionCreate",
   async run(client: Client, interaction: Interaction) {
     if (!interaction.isCommand()) return;
+    await interaction.channel?.sendTyping();
 
     // @ts-ignore
     const command: SlashCmd = slashs.get(interaction.commandName);

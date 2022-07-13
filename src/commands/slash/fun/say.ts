@@ -15,7 +15,6 @@ module.exports = {
     try {
       const txt = int.options.getString("content");
 
-      await int.channel?.sendTyping();
       await int.reply({ content: "Mensaje enviado.", ephemeral: true });
       await int.channel?.send({ content: txt });
     } catch (err) {
