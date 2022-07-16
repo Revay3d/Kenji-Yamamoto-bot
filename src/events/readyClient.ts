@@ -5,7 +5,6 @@ import { StatusType  } from "../types/status";
 module.exports = {
   name: "ready",
   run(client: Client, message: Message) {
-    console.clear();
     console.log(`${client.user?.username} is Online!`);
 
     async function $presence() {
